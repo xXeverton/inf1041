@@ -16,6 +16,6 @@ Session = sessionmaker(bind=engine)
 
 def criar_banco() -> None:
     DATABASE_DIR.mkdir(parents=True, exist_ok=True)
-    if not database_exists(engine):
-        create_database(engine)
+    if not database_exists(engine.url):
+        create_database(engine.url)
     Base.metadata.create_all(bind=engine)
